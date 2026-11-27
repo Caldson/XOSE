@@ -1,0 +1,38 @@
+{
+  "name": "xose",
+  "displayName": "XOSE / XOSHEX",
+  "description": "XOS Encoding (XOSE) language support and XOSHEX hexadecimal text editor.",
+  "version": "0.1.0",
+  "publisher": "xring",
+  "license": "MIT",
+  "icon": "icon.png",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Programming Languages", "Other"],
+  "activationEvents": [
+    "onLanguage:xose",
+    "onCommand:xose.openHex",
+    "onCommand:xose.decodeFile",
+    "onCommand:xose.encodeFile"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "xose",
+        "aliases": ["XOSE", "XOS Encoding"],
+        "extensions": [".xose"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "commands": [
+      { "command": "xose.openHex", "title": "XOSE: 打开 XOSHEX 十六进制编辑器" },
+      { "command": "xose.decodeFile", "title": "XOSE: 将当前文件解码为 UTF-8" },
+      { "command": "xose.encodeFile", "title": "XOSE: 将当前文本编码为 XOSE" }
+    ],
+    "menus": {
+      "editor/title": [
+        { "command": "xose.openHex", "when": "resourceExtname == .xose" }
+      ]
+    }
+  }
+}
